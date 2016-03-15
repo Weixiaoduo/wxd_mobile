@@ -1,0 +1,165 @@
+<!--{template common/header}-->
+<!-- header start -->
+
+<script type="text/javascript">
+	$("div.pg").addClass("ui-bar ui-bar-d");
+	$("div.pg > a").attr("data-ajax","false").attr("data-transition","none");
+	$("div.pg > strong").wrap("<a href=# data-theme='b' style=\"color:#fff;\"><span></span></a>");
+</script>
+
+
+<div data-role="header" role="banner">
+  <div class="ui-bar ui-bar-c postBtn2 threadHead" data-position="inline">
+    <div data-role="controlgroup" data-type="horizontal" > 
+      <!--{if $_G['forum']['type'] != 'sub'}--> 
+      <a href="forum.php" title="$_G['setting']['navs'][2]['navname']" data-icon="home" data-role="button" data-theme="c" data-transition="none">{lang homepage}</a> <a href="forum.php?mod=forumdisplay&fid={$_G['forum']['fid']}" data-icon="arrow-r" data-role="button" data-theme="c" data-transition="none">{$_G['forum']['name']}</a> 
+      <!--{else}--> 
+      <!--{if $_G['forum']['status'] != 3}--> 
+      <a href="forum.php" data-icon="home" data-transition="none">{$_G['setting']['navs'][2]['navname']}</a>
+
+      <a href="forum.php?mod=forumdisplay&fid={$_G['forum']['fid']}" data-icon="arrow-r" data-role="button" data-theme="b" data-transition="none">{$_G['forum']['name']}</a> <a href="$upnavlink" data-icon="arrow-u" data-transition="none">{eval echo strip_tags($_G['forum']['name']) ? strip_tags($_G['forum']['name']) : $_G['forum']['name'];}</a> 
+      <!--{else}--> 
+      <a href="group.php" data-icon="grid" data-role="button" data-theme="a" data-transition="none">$_G['setting']['navs'][3]['navname']</a> 
+      <!--{/if}--> 
+      <!--{/if}--> 
+    </div>
+    <span class="disPosts"> 
+    <a href="home.php?mod=spacecp&ac=favorite&type=forum&id={$_G[fid]}"  data-role="button" data-theme="e" data-transition="none">{lang favorite}</a>    
+    <a href="{if $_G['group']['allowpost']}forum.php?mod=post&action=newthread&fid=$_G[fid]{else}{if $_G['uid']}forum.php?mod=post&action=newthread&fid=$_G[fid]{else}member.php?mod=logging&action=login{/if}{/if}" class="wxd_color_fff" data-role="button" data-theme="b" data-transition="none">{lang send_threads}</a>
+    </span> 
+    </div>
+</div>
+
+<!-- header end -->
+
+
+    <!--{if ($_G['forum']['threadtypes'] && $_G['forum']['threadtypes']['listable']) || $_G['forum']['threadsorts']}-->
+    <div id="wxd_thread_type" class="wxd_thread_type" style="display:block">
+        <!--{if $_G['forum']['threadtypes']}-->                        
+            <a href="forum.php?mod=forumdisplay&fid=$_G[fid]{if $_GET['archiveid']}&archiveid={$_GET['archiveid']}{/if}" class="<!--{if $_GET['filter'] != 'typeid'}-->a<!--{/if}-->">{lang forum_viewall}</a>
+            <!--{loop $_G['forum']['threadtypes']['types'] $id $name}-->
+                 <a href="forum.php?mod=forumdisplay&fid=$_G[fid]&filter=typeid&typeid=$id$forumdisplayadd[typeid]" {if $_GET['filter'] == 'typeid' && $_GET['typeid'] == $id} class="a"{/if}>$name</a>
+            <!--{/loop}-->
+        <!--{/if}-->
+
+        <!--{if $_G['forum']['threadsorts']}-->                        
+            <!--{loop $_G['forum']['threadsorts']['types'] $id $name}-->
+                <a href="forum.php?mod=forumdisplay&fid=$_G[fid]&filter=sortid&sortid=$id$forumdisplayadd[sortid]" class="<!--{if $_GET[sortid] == $id}-->a<!--{/if}-->">$name</a>
+            <!--{/loop}-->            
+        <!--{/if}-->
+    </div>
+    <!--{/if}-->
+
+
+<!--{hook/forumdisplay_top_mobile}-->
+
+
+
+
+<!-- main threadlist start -->
+
+<!--{if $subexists && $_G['page'] == 1}-->
+<div data-role="content">
+                <ul data-role="listview" data-divider-theme="b" data-inset="true">
+                    <li data-role="list-divider" role="heading">
+                        {lang forum_subforums}
+                    </li>
+                    <!--{loop $sublist $sub}-->
+                    <li data-theme="c">
+                        <a href="forum.php?mod=forumdisplay&fid={$sub[fid]}" class="block_a" data-transition="none">{$sub['name']}</a>
+                    </li>
+                    <!--{/loop}-->
+                </ul>
+</div>
+<!--{/if}-->
+
+
+
+<!--{if !$subforumonly}-->
+
+    <!--{if empty($_G['forum']['picstyle']) || $_G['cookie']['forumdefstyle']}-->
+    
+    	<ul class="threadlist">
+
+            <!--{if $_G['forum_threadcount']}-->
+				<!--{loop $_G['forum_threadlist'] $key $thread}-->
+					<!--{if !$_G['setting']['mobile']['mobiledisplayorder3'] && $thread['displayorder'] > 0}-->
+						{eval continue;}
+					<!--{/if}-->
+                	<!--{if $thread['displayorder'] > 0 && !$displayorder_thread}-->
+                		{eval $displayorder_thread = 1;}
+                    <!--{/if}-->
+					<!--{if $thread['moved']}-->
+						<!--{eval $thread[tid]=$thread[closed];}-->
+					<!--{/if}-->
+					<li data-theme="d" >
+					<!--{hook/forumdisplay_thread_mobile $key}-->
+                    <a href="forum.php?mod=viewthread&tid=$thread[tid]&extra=$extra" $thread[highlight] >
+					{$thread[subject]}
+					<span class="by">$thread[author] - {$thread[dateline]}</span>
+					</a>
+					<span class="num">{$thread[replies]}</span>
+					<!--{if in_array($thread['displayorder'], array(1, 2, 3, 4))}-->
+						<span class="icon_top"><img width="23" height="24" src="./template/wxd_mobile/wxd_img/images/icon_top.png"></span>
+					<!--{elseif $thread['digest'] > 0}-->
+						<span class="icon_top"><img  width="23" height="24" src="./template/wxd_mobile/wxd_img/images/icon_digest.png"></span>
+					<!--{elseif $thread['attachment'] == 2 && $_G['setting']['mobile']['mobilesimpletype'] == 0}-->
+						<span class="icon_tu"><img width="23" height="24" src="./template/wxd_mobile/wxd_img/images/icon_tu.png"></span>
+					<!--{/if}-->
+					</li>
+                <!--{/loop}-->
+            <!--{else}-->
+			<li>{lang forum_nothreads}</li>
+			<!--{/if}-->
+		</ul>
+        <!--{else}-->               
+
+    	<ul data-role="listview" class="threadlist wxd_threadlist " >
+
+            <!--{if $_G['forum_threadcount']}-->
+				<!--{loop $_G['forum_threadlist'] $key $thread}-->
+					<!--{if !$_G['setting']['mobile']['mobiledisplayorder3'] && $thread['displayorder'] > 0}-->
+						{eval continue;}
+					<!--{/if}-->
+                	<!--{if $thread['displayorder'] > 0 && !$displayorder_thread}-->
+                		{eval $displayorder_thread = 1;}
+                    <!--{/if}-->
+					<!--{if $thread['moved']}-->
+						<!--{eval $thread[tid]=$thread[closed];}-->
+					<!--{/if}-->
+				<li data-theme="d" data-icon="false" class="wxd_pic_thread">
+                 <a  href="forum.php?mod=viewthread&tid=$thread[tid]&extra=$extra"  >   
+                    <!--{if $thread['cover']}-->
+                    <img src="$thread[coverpath]"   class="wxd_shadow_3"/>
+                    <!--{else}-->
+                    <img  src="./template/wxd_mobile/wxd_img/images/wxd_nopic.png" class="wxd_shadow_3"/>
+                    <!--{/if}-->
+                             
+					<!--{hook/forumdisplay_thread_mobile $key}-->
+                    <h2 class="wxd_pic_thread_title">{$thread[subject]}</h2>
+                    <span class="by">$thread[author] - {$thread[dateline]}</span><span class="ui-li-count" >{$thread[replies]}</span>
+                  </a>
+				</li>
+                <!--{/loop}-->
+            <!--{else}-->
+			<li>{lang forum_nothreads}</li>
+			<!--{/if}-->
+		</ul>
+
+        <!--{/if}-->
+
+<!--
+<div class="wxd_btn">
+</div>
+-->
+
+$multipage
+
+
+<!--{/if}-->
+
+
+<!-- main threadlist end -->
+<!--{hook/forumdisplay_bottom_mobile}-->
+<div class="pullrefresh" style="display:none;"></div>
+<!--{template common/footer}-->

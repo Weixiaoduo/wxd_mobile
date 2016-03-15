@@ -1,0 +1,221 @@
+/* ----------------------------------
+© 2012-2015 Weixiaoduo.com  All Rights Reserved.
+
+Author: 薇晓朵网络工作室 
+Site: http://www.Weixiaoduo.com
+QQ: 1666515529
+Created Time:  2015年4月9日19:24:44
+---------------------------------- */
+
+
+/* common */
+.wxd_fixed { position:fixed !important;}
+.wxd_left { float:left !important; }
+.wxd_right { float:right !important; }
+.wxd_w_50 { width:49.90%; }
+.wxd_margin_top_0 { margin-top:0px !important; }
+.wxd_padding_top_0 { padding-top:0px !important; }
+.wxd_color_fff { color:#fff;}
+.wxd_color_fff a { color:#fff;}
+a.wxd_color_fff { color:#fff !important;}
+.wxd_color_fff li a { color:#fff;}
+.wxd_color_333 { color:#333;}
+.wxd_color_333 a { color:#333;}
+.wxd_color_333 li a { color:#333;}
+
+.wxd_border_none { border:none !important; }
+.wxd_border_none li { border:none !important; }
+.wxd_border_none a { border:none !important; }
+
+.wxd_bg_none { background:none !important;}
+.wxd_shadow_none { box-shadow:none !important; -webkit-box-shadow:none !important; -moz-box-shadow:none !important;}
+
+.wxd_shadow_3 {-moz-box-shadow: 2px 2px 3px #999;	-webkit-box-shadow: 2px 2px 3px #999;	box-shadow: 2px 2px 3px #999;}
+
+.icon_tu {}
+icon_top {/* background-size:23px 24px;*/}
+
+/* text list */
+	.xld dt { padding: 8px 0 5px; font-weight: 700; }
+	.xld dd { margin-bottom: 8px; }
+		/* text with thumbnail image ( must with the additional class .cl ) */
+		.xld .m { float: left; margin: 8px 8px 10px 0; }
+		.xld .atc { float: right; margin-left: 20px; }
+			.ie8 .xld .atc { max-width: 86px; }
+			.xld .atc img { padding: 2px; max-width: 80px; max-height: 80px; border: 1px solid #CCC; background: {WRAPBG}; }
+				.ie6 .xld .atc img { width: expression(this.width > 80 && this.width>=this.height ? 80 : true); height: expression(this.height > 80 && this.width<=this.height ? 80 : true); }
+		.xld a.d, .xl a.d, .attc a.d, .c a.d, .sinf a.d { float: right; width: 20px; height: 20px; overflow: hidden; line-height: 100px; background: url({IMGDIR}/op.png) no-repeat 0 -2px; }
+			.attc a.d { float: left; }
+		.xld a.d:hover, .xl a.d:hover, .attc a.d:hover, .c a.d:hover, .sinf a.d:hover { background-position: 0 -22px; }
+		.xld a.b { background-position: 0 -40px; }
+			.xld a.b:hover { background-position: 0 -60px; }
+
+
+
+
+/* header_common */
+
+.wxd_header { position: relative; height: auto; }
+.wxd_header div.ui-block-b { position: relative; }
+.wxd_header { padding:5px 0 2px 0; }
+.wxd_header .wxd_menu a.wxd_menu_icon  { display: block; width: 40px; height: 40px; position: absolute; top: 5px; left: 5px;}
+
+.wxd_header .wxd_menu .wxd_logo { display: block; width: 120px; height: 40px; position: absolute; top: 5px; left: 50px;/*width: 100px; height: 50px;*/ }
+
+
+.user_fun li { float:right; padding:5px 5px 10px 5px; }
+
+	.user_fun li a,.nav .icon_edit a { display:block; width:28px; height:28px;  line-height:2000px; overflow:hidden; /*  background-size: 28px 28px; */ }
+
+	.user_fun a.icon_userinfo {background: url(images/wxd_fun_icon_user.png) no-repeat ; background-size: 28px 28px;  }
+	
+	.user_fun a.icon_threadlist { background: url(images/wxd_fun_icon_forum.png) no-repeat ; background-size: 28px 28px;  }
+	
+	.user_fun a.icon_search {background: url(images/wxd_fun_icon_search.png) no-repeat ; background-size: 28px 28px;  }	
+	
+	.user_fun a.icon_hotthread {background: url(images/wxd_fun_icon_hot.png) no-repeat ; background-size: 28px 28px;  }	
+	
+	#usermsg { position:relative;}
+	.user_fun .icon_msg { position: absolute;background: url(./images/icon_msg.png) no-repeat; width:10px; height:10px; display:block; top:14px; left:26px; }
+	
+	.nav .icon_edit a { background: url(images/wxd_fun_icon_edit.png) no-repeat ; background-size: 28px 28px; }
+
+
+	.user_fun a.icon_userinfo:hover,.user_fun .on a.icon_userinfo { background-position:0 0;}
+	.user_fun a.icon_threadlist:hover,.user_fun .on a.icon_threadlist { background-position:0 0;}
+	.user_fun a.icon_search:hover,.user_fun .on a.icon_search { background-position:0 0;}
+	.user_fun a.icon_hotthread:hover,.user_fun .on a.icon_hotthread { background-position:0 0;}
+	.nav .icon_edit a:hover {background-position:0 0;}
+
+
+.newMessage { color: #fc0; }
+.pg label { display: none; }
+.uiddiv, .footerDiv { border: none; }
+.ui-bar { font-size: 12px; }
+.ui-header .ui-btn, .ui-footer .ui-btn, .ui-bar .ui-btn { display: inline-block; font-size: 12px; margin: 0; }
+.ui-header .ui-btn-inner, .ui-footer .ui-btn-inner, .ui-bar .ui-btn-inner { padding: 0.4em 8px 0.5em; }
+.ui-controlgroup-horizontal .ui-btn, .ui-controlgroup-horizontal .ui-select { margin: 0 -6px 0 0; }
+.ui-btn-icon-left .ui-btn-inner { padding-left: 27px; }
+.ui-header .ui-btn-icon-left .ui-icon, .ui-footer .ui-btn-icon-left .ui-icon, .ui-bar .ui-btn-icon-left .ui-icon { left: 4px; }
+
+
+/* header */
+.wxd_content { padding:0px !important; margin:0px !important;}
+
+
+/* panel */
+/*
+.ui-panel { display:none; }
+*/
+
+
+
+
+/* footer */
+
+
+
+/* forum */
+
+	.wxd_sub_forum { border-top:0; border-radius: 0;}
+	.wxd_sub_forum li { height:75px;  border-bottom:1px solid #ccc; overflow:hidden; padding-left:5px; }
+	.wxd_sub_forum li img { float:left; min-height:50px; display:inline-block; margin:5px 10px 0 0; }
+	.wxd_sub_forum li:last-child { border-bottom:none;}
+	.wxd_sub_forum li:last-child img { margin-top:0px;}
+	.wxd_sub_forum li a { display: block;}
+
+
+
+
+
+/* page*/
+	.pg { margin-top:15px !important;}
+	.pg a span{padding:0px; font-size:12px !important; color:#555 !important; }
+	.pg a {}
+	.pg {text-align:right; overflow: hidden; word-wrap: none; padding:2px 2px 3px 2px; margin:0;border: none;}
+	.pg strong { background-color: transparent; color:#fff !important; }
+	
+	
+
+/* viewthread */
+
+	.postBtn2{ padding:5px 4px 5px 4px; position: relative; border: none;}
+	.postBtn2 span.disPosts{position: absolute; right:0.3em; top:0.35em; z-index:99999; }
+	.postBtn2 .circleLogo{height:30px;margin:0 0.2em 0 0em;padding: 0; float:left;}
+	
+	.replyBtn{ background: #e0e0e0; padding:5px 4px 5px 4px; position: relative; border-top:none; border-left: none; border-right: none;}
+	.replyBtn span.disPosts{position: absolute; right:0.3em; top:0.3em;}
+	
+	.contentDiv{padding:0;margin: 0;}
+	.contentDiv div.typeSort p{padding:0; margin: 0;}
+	.typeSort p{padding: 0.2em; margin: 0;}
+	.listDiv{padding: 0;margin: 0;}
+	.listDiv h4{ padding: 0.5em 0 0 0;margin: 0 0 -0.3em 0; word-break: break-all; font-size: 0.9em;}
+	.listDiv span.listInfo{position: absolute; top: 6px; left: 41px; font-size: 0.6em;color: #aaa;}
+
+	
+	.threadType {font-size: 0.7em; color: #aaa; padding:0 0 0.3em 0 ; display: block;}
+	.threadType a{ text-decoration: none;}
+	.deadLine {font-size: 0.6em; color: #aaa; padding: 0; margin: 0 ;}
+	.ui-bar-c { border-top:none;}
+	
+	.articleHead span.countBox{position:absolute; right: 0.5em; top: 0.75em; border: 1px solid #ccc; border-radius: 1em; background: #eee; font-size: 0.8em; padding: 0.2em 0.7em; color: #999;}
+	
+	.user{position: relative; padding: 0.6em 0.9em 0.2em 0.9em;  {if !$_G['uid']}border-top:1px dashed #ddd;{/if}}
+	.userAvatar{float: left; border-radius: 0.5em; border:2px solid #ddd; height:40px;}
+	.userAvatar img{width: 40px;height: 40px; border-radius: 0.5em; border:0px solid #bbb;}
+	
+	.userBtn{ margin: 0 0 0 0.45em;}
+	.userBtn a{ border-radius: 0.5em; padding: 0.2em 0.5em; margin-right:0.1em; background: #ddd; font-size: 0.7em; text-shadow: none;}
+	.user a{text-decoration: none;}
+	.userName{font-size: 1.2em; margin: 0 0 0 0.5em; line-height: 1.2em;}
+	.userFloor{position: absolute;right:0.5em;top:-0.15em; border-bottom-left-radius:0.5em;border-bottom-right-radius:0.5em;border: 0px solid #ccc; border-top: none; background: #d0d0d0; font-size: 0.8em;padding: 0.5em 0.6em 0.5em 1em; color:#888; letter-spacing:5px;}
+	
+	.pbody{clear: both;  margin: 0; padding:0.6em 1.1em 1.5em 1.1em;}
+	.editDiv{margin:1.5em -1.1em -1.5em -1.1em; border: none; background: none;}
+	.fastPost { margin-top:-1px; }
+	.attach_h, p.mbn, p.xg1, span.xg1{ font-size: 0.7em;color: #666; display: block;padding: 0;margin: 0;}
+	.postmessage{ line-height: 1.45em;}
+	.pstatus{font-size: 0.8em; margin:0;color:#aaa;}
+	blockquote{ margin: 0.5em 1.5em; padding-left:1em; font-size:0.8em; line-height:1.3em; border-left: 0.5em solid #ccc;}
+
+
+	#mask { z-index:99; }
+
+.wxd_manage { width:100%; height:50px; clear:both;}
+.wxd_manage 	li a.button { float:left; display:inline-block; width:50px; height:32px; line-height:32px; text-align:center; color:#333 !important; background:#fff; margin:0 5px; border:0; font-size:12px;z-index:9999; border-radius:5px; box-shadow:1px 1px 3px #ccc; }
+
+
+/* post */
+.ui-icon-photo a { display:block; width:250px; height:40px; line-height:2000px; overflow:hidden; background: url(images/ui-icon-photo.png) no-repeat ; background-size: 250px 40px; -moz-border-radius:5px; -webkit-border-radius:5px; border-radius:5px; -moz-box-shadow: 0px 0px 3px #ccc;	-webkit-box-shadow: 0px 0px 3px #ccc;	box-shadow: 0px 0px 3px #ccc;}
+.ui-icon-photo .ui-body-c , .ui-icon-photo .ui-overlay-c  {	border: none ;	color: #333 ;	text-shadow: none ;	background: none; 	background-image: none ; }
+
+.ui-icon-photo .ui-bar-c .ui-shadow  {	-moz-box-shadow: none;	-webkit-box-shadow: none ;	box-shadow: none ;}
+.ui-icon-photo .ui-shadow-inset {	-moz-box-shadow: none ;	-webkit-box-shadow: none ;	box-shadow: none ;}
+
+
+
+/* forumdisplay */
+.wxd_threadlist {margin-top:0px !important;}
+.wxd_threadlist li {  margin:0px 15px !important; padding-bottom:10px; border-top:1px solid #fff;}
+.wxd_threadlist li a h3 { color:#333 ; }
+/*
+.wxd_threadlist li img { float:left; display:inline;}
+*/
+.wxd_threadlist li img { margin:10px 10px 0px 5px; padding:1px; background:#fff; }
+
+.wxd_thread_type { }
+.wxd_thread_type a {  display: inline-block; background:#fff !important; border:1px solid #ccc; padding:5px 10px; margin:3px 5px; text-align:center;  -moz-border-radius:20px; -webkit-border-radius:20px; border-radius:20px; }
+
+.wxd_pic_hd {}
+.wxd_pic_hd img { max-width:100px; max-height:70px; }
+
+.wxd_pic_thread {}
+.wxd_pic_thread img { max-width:80px; max-height:80px; }
+
+
+	.wxd_threadlist li a { display:block; padding:3px 5px 5px 5px; font-size:16px; line-height:25px; }
+	.wxd_threadlist li h2.wxd_pic_thread_title { height:40px;  line-height:20px; padding:0px; margin:0px;  font-size:16px; overflow:hidden;}
+	.threadlist p a { padding-left:0px;}
+	.threadlist .num { position:absolute;  right:10px; bottom:20px; padding:0 0 0 18px; font-size:12px; color:#ccc; font-weight:normal !important; }
+

@@ -1,0 +1,50 @@
+<!--{template common/header}-->
+<style id="diy_style" type="text/css"></style>
+
+<!-- header start -->
+<!-- header end -->
+
+<div data-role="content" class="wxd_content">
+
+
+<script type="text/javascript">
+	$("div.pg").addClass("ui-bar ui-bar-d");
+	$("div.pg > a").attr("data-transition","none");
+	$("div.pg > strong").wrap("<a href=# data-theme='b'><span></span></a>");
+	$("div.postmessage > a").attr("data-ajax","false");
+	$("div.box_ex2 > a").attr("data-ajax","false");
+	$("p.mbn > a").attr("data-ajax","false");
+	$("font").removeAttr("size");
+</script>
+
+
+
+
+
+
+<!--{block/9}-->
+
+<!--{block/8}-->
+
+
+<!-- main threadlist start -->
+<div class="threadlist">
+	<h2 class="thread_tit">{lang hotest_thread}</h2>
+
+	<!--{loop $data $key $list}-->
+		<!--{subtemplate forum/guide_list_row}-->
+	<!--{/loop}-->
+
+</div>
+<!-- main threadlist end -->
+
+$multipage
+
+<div class="pullrefresh" style="display:none;"></div>
+
+<script src="misc.php?mod=diyhelp&action=get&type=index&diy=yes&r={echo random(4)}" type="text/javascript"></script>
+
+</div>
+
+
+<!--{template common/footer}-->

@@ -1,0 +1,110 @@
+<!--{if $_G['setting']['mobile']['mobilehotthread'] && $_GET['forumlist'] != 1}-->
+	<!--{eval dheader('Location:forum.php?mod=guide&view=hot');exit;}-->
+<!--{/if}-->
+<!--{template common/header}-->
+<!--{if $_GET['visitclient']}-->
+
+<!--{else}-->
+
+<!-- header start -->
+<!--{if $showvisitclient}-->
+<!--{/if}-->
+
+
+<!--{hook/index_top_mobile}-->
+
+
+<!-- main forumlist start -->
+
+<div data-role="content" style="margin-top:10px;">
+ 
+<!--
+  <ul data-role="listview" data-theme="d" data-divider-theme="b"  data-count-theme="c" data-inset="true" >
+-->
+  <ul data-role="listview" data-theme="d" data-divider-theme="b"  data-count-theme="c" >
+	<!--{loop $catlist $key $cat}-->
+	<li data-role="list-divider" role="heading">
+		<div class="subforumshow cl" href="#sub_forum_$cat[fid]">
+			<span class="o y"><img width="50" height="22" src="./template/wxd_mobile/wxd_img/images/collapsed_<!--{if !$_G[setting][mobile][mobileforumview]}-->yes<!--{else}-->no<!--{/if}-->.png"></span>
+		<a href="javascript:;" class="wxd_color_fff">$cat[name]</a>
+        </div>
+	</li>
+
+
+
+    
+    <li >
+    	<div id="sub_forum_$cat[fid]" class="wxd_sub_forum">
+                <ul  data-role="listview" data-theme="d">
+				<!--{loop $cat[forums] $forumid}-->
+				<!--{eval $forum=$forumlist[$forumid];}-->
+                    <li data-role="list-divider" class="wxd_bg_none wxd_pic_hd "  {if strstr($z,$forum[fid])}data-icon="star" data-theme="e"{else}data-theme="c"{/if} data-icon="true" >
+						
+                          <!--{if $forum[icon]}--> 
+                          $forum[icon] 
+                          <!--{else}--> 
+                          <a href="forum.php?mod=forumdisplay&fid={$forum['fid']}">
+                          <img  src="./template/wxd_mobile/wxd_img/images/forum{if $forum[folder]}_new{/if}.gif" /> 
+                          </a>
+						  <!--{/if}--> 
+				
+                        <a href="forum.php?mod=forumdisplay&fid={$forum['fid']}" class="{if $forum_favlist[$forumid]}xi1{/if} a">
+							<p style="font-size:1.125em;padding:0; margin:7px 0 7px 0;letter-spacing:1px;">          
+                            <strong>{$forum[name]}</strong>
+                            </p>
+							
+                            <p><span style="color:#aaa;">{lang index_threads} {$forum[threads]} / {$forum[posts]}  | {$forum[lastpost][dateline]}</span></p>
+							<!--{if $_GET[simpletype]!='yes' && $forum[description]}-->
+							<p style="color:#aaa;"><!--{echo cutstr($forum[description], 500)}--></p>
+							<!--{/if}-->
+
+							<span class="ui-li-count"   style="font-size:14px;">{$forum[todayposts]}</span>
+						</a>
+                    </li>
+				<!--{/loop}-->
+                </ul>
+     	</div>       
+	</li>
+	<!--{/loop}-->
+  </ul>
+    
+    
+
+</div>
+
+
+<!-- main forumlist end -->
+<!--{hook/index_middle_mobile}-->
+
+<!--
+<script type="text/javascript">JQuery.noConflict();</script>
+-->
+
+<!--{/if}-->
+
+
+<script type="text/javascript">
+	(function() {
+		<!--{if !$_G[setting][mobile][mobileforumview]}-->
+			$('.wxd_sub_forum').css('display', 'block');
+		<!--{else}-->
+			$('.wxd_sub_forum').css('display', 'none');
+		<!--{/if}-->
+		$('.subforumshow').on('click', function() {
+			var obj = $(this);
+			var subobj = $(obj.attr('href'));
+			if(subobj.css('display') == 'none') {
+				subobj.css('display', 'block');
+				obj.find('img').attr('src', './template/wxd_mobile/wxd_img/images/collapsed_yes.png');
+			} else {
+				subobj.css('display', 'none');
+				obj.find('img').attr('src', './template/wxd_mobile/wxd_img/images/collapsed_no.png');
+			}
+		});
+	 })();
+</script>
+
+
+
+
+<!--{template common/footer}-->
